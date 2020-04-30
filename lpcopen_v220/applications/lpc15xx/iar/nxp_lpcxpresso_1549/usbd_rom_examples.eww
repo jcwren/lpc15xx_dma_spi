@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\..\..\..\..\software\lpc_core\lpc_chip\chip_15xx\lib_lpc_chip_15xx.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\..\..\..\..\software\lpc_core\lpc_board\boards_15xx\nxp_lpcxpresso_1549\lib_lpc_board_nxp_lpcxpresso_1549.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\usbd_rom\cdc_uart\cdc_uart.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\usbd_rom\cdc_vcom\cdc_vcom.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\usbd_rom\composite\composite.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\usbd_rom\hid_generic\hid_generic.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\usbd_rom\hid_keyboard\hid_keyboard.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\usbd_rom\hid_mouse\hid_mouse.ewp</path>
+  </project>
+  <batchBuild>
+  </batchBuild>
+</workspace>
+
+

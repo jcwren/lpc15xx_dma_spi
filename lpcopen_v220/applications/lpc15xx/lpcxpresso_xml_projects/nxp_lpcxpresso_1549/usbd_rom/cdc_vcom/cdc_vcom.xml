@@ -1,0 +1,59 @@
+<project xmlns:xi="http://www.w3.org/2001/XInclude" type="Basic C project" name="usbd_rom_cdc_vcom" chip="LPC1549" vendor="NXP">
+	<filelist name="nxp_lpcxpresso_1549_usbd_rom_cdc_vcom">
+		<import name="nxp_lpcxpresso_1549_usbd_rom_cdc_vcom_src" src="../../../../../../applications/lpc15xx/examples/usbd_rom/cdc_vcom" dest="example/src">
+			<include>*.c</include>
+		</import>
+		<import name="nxp_lpcxpresso_1549_usbd_rom_cdc_vcom_inc" src="../../../../../../applications/lpc15xx/examples/usbd_rom/cdc_vcom" dest="example/inc">
+			<include>*.h</include>
+		</import>
+		<import name="nxp_lpcxpresso_1549_usbd_rom_cdc_vcom_doc" src="../../../../../../applications/lpc15xx/examples/usbd_rom/cdc_vcom" dest="example">
+			<include>*.dox</include>
+			<include>*.txt</include>
+		</import>
+		<import name="nxp_lpcxpresso_1549_usbd_rom_cdc_vcom_sysinit" src="../../../../../../applications/lpc15xx/startup_code" dest="example/src">
+			<copy>sysinit.c</copy>
+		</import>
+		<import name="nxp_lpcxpresso_1549_usbd_rom_cdc_vcom_startup" src="../../../../../../applications/lpc15xx/startup_code" dest="example/src">
+			<copy>cr_startup_lpc15xx.c</copy>
+		</import>
+	</filelist>
+	<cfglist name="nxp_lpcxpresso_1549_usbd_rom_cdc_vcom">
+		<setting name="nxp_lpcxpresso_1549_usbd_rom_cdc_vcom_cdef" id="compiler.def">
+			<value>__USE_LPCOPEN</value>
+		</setting>
+		<setting id="assembler.c.header">
+			<value>Redlib</value>
+		</setting>
+		<setting id="compiler.c.header">
+			<value>Redlib</value>
+		</setting>
+		<setting id="linker.library.type">
+			<value>Redlib (nohost)</value>
+		</setting>
+		<setting id="linker.libs">
+			<value>lpc_board_nxp_lpcxpresso_1549</value>
+			<value>lpc_chip_15xx</value>
+		</setting>
+		<setting name="nxp_lpcxpresso_1549_usbd_rom_cdc_vcom_incdir" id="compiler.inc">
+			<value>${workspace_loc:/lpc_chip_15xx/inc}</value>
+			<value>${workspace_loc:/lpc_board_nxp_lpcxpresso_1549/inc}</value>
+			<value>${workspace_loc:/${ProjName}/example/inc}</value>
+			<value>${workspace_loc:/lpc_chip_15xx/inc/usbd}</value>
+		</setting>
+		<setting id="linker.paths" buildType="Debug">
+			<value>${workspace_loc:/lpc_chip_15xx/Debug}</value>
+			<value>${workspace_loc:/lpc_board_nxp_lpcxpresso_1549/Debug}</value>
+		</setting>
+		<setting id="linker.paths" buildType="Release">
+			<value>${workspace_loc:/lpc_chip_15xx/Release}</value>
+			<value>${workspace_loc:/lpc_board_nxp_lpcxpresso_1549/Release}</value>
+		</setting>
+		<requires>
+			<value>lpc_chip_15xx</value>
+			<value>lpc_board_nxp_lpcxpresso_1549</value>
+		</requires>
+		<setting id="compiler.def">
+			<value>CORE_M3</value>
+		</setting>
+	</cfglist>
+</project>

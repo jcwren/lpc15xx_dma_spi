@@ -1,0 +1,54 @@
+<workspace xmlns:xi="http://www.w3.org/2001/XInclude">
+	<prjgroup name="libchip">
+		<project description="libchip/libchip/libchip.xml"/>
+	</prjgroup>
+	<prjgroup name="libboard">
+		<project description="libboard/libboard/libboard.xml"/>
+	</prjgroup>
+	<prjgroup name="periph">
+		<project description="periph/acmp/acmp.xml"/>
+		<project description="periph/adc/adc.xml"/>
+		<project description="periph/adc_rom/adc_rom.xml"/>
+		<project description="periph/blinky/blinky.xml"/>
+		<project description="periph/ccan_open_rom/ccan_open_rom.xml"/>
+		<project description="periph/ccan_rom/ccan_rom.xml"/>
+		<project description="periph/clkout/clkout.xml"/>
+		<project description="periph/crc/crc.xml"/>
+		<project description="periph/dac/dac.xml"/>
+		<project description="periph/dma_mem/dma_mem.xml"/>
+		<project description="periph/dma_rom_uart/dma_rom_uart.xml"/>
+		<project description="periph/dma_uart/dma_uart.xml"/>
+		<project description="periph/eeprom/eeprom.xml"/>
+		<project description="periph/flashiap/flashiap.xml"/>
+		<project description="periph/freqmeas/freqmeas.xml"/>
+		<project description="periph/gpio/gpio.xml"/>
+		<project description="periph/grouped_int/grouped_int.xml"/>
+		<project description="periph/i2cm_interrupt/i2cm_interrupt.xml"/>
+		<project description="periph/i2cm_polling/i2cm_polling.xml"/>
+		<project description="periph/i2cs_interrupt/i2cs_interrupt.xml"/>
+		<project description="periph/i2c_rom_interrupt/i2c_rom_interrupt.xml"/>
+		<project description="periph/i2c_rom_interrupt_slave/i2c_rom_interrupt_slave.xml"/>
+		<project description="periph/i2c_rom_polling/i2c_rom_polling.xml"/>
+		<project description="periph/iap/iap.xml"/>
+		<project description="periph/mrt/mrt.xml"/>
+		<project description="periph/pinint/pinint.xml"/>
+		<project description="periph/pmu/pmu.xml"/>
+		<project description="periph/pmu_rom/pmu_rom.xml"/>
+		<project description="periph/ritimer/ritimer.xml"/>
+		<project description="periph/rtc/rtc.xml"/>
+		<project description="periph/sct_pwm/sct_pwm.xml"/>
+		<project description="periph/spi_interrupt/spi_interrupt.xml"/>
+		<project description="periph/spi_polling/spi_polling.xml"/>
+		<project description="periph/spi_rom_interrupt/spi_rom_interrupt.xml"/>
+		<project description="periph/spi_rom_interrupt_slave/spi_rom_interrupt_slave.xml"/>
+		<project description="periph/spi_rom_polling/spi_rom_polling.xml"/>
+		<project description="periph/spi_rom_polling_slave/spi_rom_polling_slave.xml"/>
+		<project description="periph/systick/systick.xml"/>
+		<project description="periph/temp/temp.xml"/>
+		<project description="periph/uart_rb/uart_rb.xml"/>
+		<project description="periph/uart_rom_int/uart_rom_int.xml"/>
+		<project description="periph/uart_rom_polling/uart_rom_polling.xml"/>
+		<project description="periph/wwdt/wwdt.xml"/>
+	</prjgroup>
+</workspace>
+

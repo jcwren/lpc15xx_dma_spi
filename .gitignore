@@ -1,0 +1,14 @@
+*.bin
+*.d
+*.elf
+*.hdrs
+*.hex
+*.lst
+*.map
+*.o
+*.swp
+*.sym
+
+.depend*
+.DS_Store
+tags

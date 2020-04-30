@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\..\..\..\..\software\lpc_core\lpc_chip\chip_15xx\lib_lpc_chip_15xx.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\..\..\..\..\software\lpc_core\lpc_board\boards_15xx\nxp_lpcxpresso_1549\lib_lpc_board_nxp_lpcxpresso_1549.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\freertos\blinky\blinky.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>All_libs_and_Examples</name>
+      <member>
+        <project>lib_lpc_chip_15xx</project>
+        <configuration>chip_15xx_lib</configuration>
+      </member>
+      <member>
+        <project>lib_lpc_board_nxp_lpcxpresso_1549</project>
+        <configuration>nxp_lpcxpresso_1549</configuration>
+      </member>
+      <member>
+        <project>freertos_blinky</project>
+        <configuration>iflash_nxp_lpcxpresso_1549</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<ProjectWorkspace xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="project_mpw.xsd">
+
+  <SchemaVersion>1.0</SchemaVersion>
+
+  <Header>### uVision Project, (C) Keil Software</Header>
+
+  <WorkspaceName>WorkSpace</WorkspaceName>
+
+  <project>
+    <PathAndName>..\..\..\..\software\lpc_core\lpc_chip\chip_15xx\lib_lpc_chip_15xx.uvprojx</PathAndName>
+    <NodeIsActive>1</NodeIsActive>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>..\..\..\..\software\lpc_core\lpc_board\boards_15xx\nxp_lpcxpresso_1549\lib_lpc_board_nxp_lpcxpresso_1549.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\acmp\acmp.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\adc\adc.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\adc_rom\adc_rom.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\blinky\blinky.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\ccan_rom\ccan_rom.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\ccan_open_rom\ccan_open_rom.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\clkout\clkout.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\crc\crc.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\dac\dac.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\dma_mem\dma_mem.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\dma_rom_uart\dma_rom_uart.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\dma_uart\dma_uart.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\eeprom\eeprom.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\flashiap\flashiap.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\grouped_int\grouped_int.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\i2c_rom_interrupt\i2c_rom_interrupt.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\i2c_rom_interrupt_slave\i2c_rom_interrupt_slave.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\i2c_rom_polling\i2c_rom_polling.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\i2cm_interrupt\i2cm_interrupt.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\i2cm_polling\i2cm_polling.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\i2cs_interrupt\i2cs_interrupt.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\iap\iap.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\mrt\mrt.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\pinint\pinint.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\pmu\pmu.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\pmu_rom\pmu_rom.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\ritimer\ritimer.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\rtc\rtc.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\sct_pwm\sct_pwm.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\spi_interrupt\spi_interrupt.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\spi_polling\spi_polling.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\spi_rom_interrupt\spi_rom_interrupt.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\spi_rom_interrupt_slave\spi_rom_interrupt_slave.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\spi_rom_polling\spi_rom_polling.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\spi_rom_polling_slave\spi_rom_polling_slave.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\systick\systick.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\temp\temp.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\uart_rb\uart_rb.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\uart_rom_int\uart_rom_int.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\uart_rom_polling\uart_rom_polling.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+  <project>
+    <PathAndName>.\periph\wwdt\wwdt.uvprojx</PathAndName>
+    <NodeIsCheckedInBatchBuild>1</NodeIsCheckedInBatchBuild>
+  </project>
+
+</ProjectWorkspace>
