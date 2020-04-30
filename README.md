@@ -17,7 +17,7 @@ buffer, the DMA interrupt handler will start the next entry.
 
 If the length of the DMA request is <= 1024 words (where a word is the size of
 each entry, which can be 1, 2, or 4 bytes), the `dmaSPI()` function can be used.
-If the request is > 1024 words, then the `dmaSPIEx` function can be used, which
+If the request is > 1024 words, then the `dmaSPIEx()` function can be used, which
 will fragment the requests into blocks of 1024 words.
 
 The demo will send 26 strings of 32 characters to the SPI0 port, delay 1 second,
