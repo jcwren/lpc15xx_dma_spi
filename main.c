@@ -13,16 +13,18 @@
 
 //
 //  SPI clock divider. Actual frequency is SystemCoreClock (72MHz) / divider.
-//  A divider of 8 gives a frequency of 9MHz.
+//  A divider of 8 gives a frequency of 9MHz.  A divisor of 669 (107623Hz)
+//  seems to be the lowest the RA8876 will work at. 670 (107462Hz) fails.
 //
 //  /8 --   9.00 MHz
 //  /7 --  10.28 MHz
-//  /6 --  12.00 MHz (this and faster is not 100% reliable)
+//  /6 --  12.00 MHz
 //  /5 --  14.40 MHz
 //  /4 --  18.00 MHz
 //  /3 --  24.00 MHz
 //  /2 --  36.00 MHz
 //  /1 --  72.00 MHz (does not work)
+//
 //
 #define SPI0_CLOCK_DIVIDER (2)
 
@@ -36,7 +38,7 @@ typedef struct dmaQueue_s
   volatile size_t tail;
   volatile size_t error;
   volatile size_t xfers;
-  DMA_CHDESC_T dmaDesc [MAX_SPI_DESCRIPTORS] __attribute__ ((aligned(16)));
+  DMA_CHDESC_T dmaDesc [MAX_SPI_DESCRIPTORS] __attribute__ ((aligned (16)));
 }
 dmaQueue_t;
 
@@ -92,39 +94,6 @@ static void vLEDTask2 (void *pvParameters __attribute__ ((unused)))
 //
 //------------------------------------------------------------------------------
 //
-static void initSPI0 (void)
-{
-  SPI_CFG_T spiCfg = {0};
-
-  spiCfg.Mode = SPI_MODE_MASTER;
-  spiCfg.ClkDiv = SPI0_CLOCK_DIVIDER;
-  spiCfg.ClockMode = SPI_CLOCK_MODE3;
-  spiCfg.DataOrder = SPI_DATA_MSB_FIRST;
-  spiCfg.SSELPol = SPI_CFG_SPOL0_LO | SPI_CFG_SPOL1_LO | SPI_CFG_SPOL2_LO | SPI_CFG_SPOL3_LO;
-
-  Chip_SPI_Init (LPC_SPI0);
-  Chip_SPI_SetConfig (LPC_SPI0, &spiCfg);
-  Chip_SPI_SetControlInfo (LPC_SPI0, 8, SPI_TXDATCTL_EOT);
-  Chip_SPI_Enable (LPC_SPI0);
-
-  Chip_Clock_EnablePeriphClock (SYSCTL_CLOCK_SWM);
-
-  Chip_IOCON_PinMuxSet (LPC_IOCON, GPIO_SPI0_SCK_PORT,      GPIO_SPI0_SCK_PIN,      (IOCON_MODE_INACT | IOCON_DIGMODE_EN));
-  Chip_IOCON_PinMuxSet (LPC_IOCON, GPIO_SPI0_MISO_PORT,     GPIO_SPI0_MISO_PIN,     (IOCON_MODE_INACT | IOCON_DIGMODE_EN));
-  Chip_IOCON_PinMuxSet (LPC_IOCON, GPIO_SPI0_MOSI_PORT,     GPIO_SPI0_MOSI_PIN,     (IOCON_MODE_INACT | IOCON_DIGMODE_EN));
-  Chip_IOCON_PinMuxSet (LPC_IOCON, GPIO_LCD_RA8876_CS_PORT, GPIO_LCD_RA8876_CS_PIN, (IOCON_MODE_INACT | IOCON_DIGMODE_EN));
-
-  Chip_SWM_MovablePortPinAssign (SWM_SPI0_SCK_IO,      GPIO_SPI0_SCK_PORT,      GPIO_SPI0_SCK_PIN);
-  Chip_SWM_MovablePortPinAssign (SWM_SPI0_MISO_IO,     GPIO_SPI0_MISO_PORT,     GPIO_SPI0_MISO_PIN);
-  Chip_SWM_MovablePortPinAssign (SWM_SPI0_MOSI_IO,     GPIO_SPI0_MOSI_PORT,     GPIO_SPI0_MOSI_PIN);
-  Chip_SWM_MovablePortPinAssign (SWM_SPI0_SSELSN_0_IO, GPIO_LCD_RA8876_CS_PORT, GPIO_LCD_RA8876_CS_PIN);
-
-  Chip_Clock_DisablePeriphClock (SYSCTL_CLOCK_SWM);
-}
-
-//
-//------------------------------------------------------------------------------
-//
 static void dmaTXSetup (void)
 {
 	Chip_DMA_EnableChannel (LPC_DMA, DMAREQ_SPI0_TX);
@@ -154,6 +123,36 @@ static void initDMA (void)
   dmaTXSetup ();
 
 	NVIC_EnableIRQ (DMA_IRQn);
+}
+
+static void initSPI0 (void)
+{
+  SPI_CFG_T spiCfg = {0};
+
+  spiCfg.Mode      = SPI_MODE_MASTER;
+  spiCfg.ClkDiv    = SPI0_CLOCK_DIVIDER;
+  spiCfg.ClockMode = SPI_CLOCK_MODE3;
+  spiCfg.DataOrder = SPI_DATA_MSB_FIRST;
+  spiCfg.SSELPol   = SPI_CFG_SPOL0_LO | SPI_CFG_SPOL1_LO | SPI_CFG_SPOL2_LO | SPI_CFG_SPOL3_LO;
+
+  Chip_SPI_Init (LPC_SPI0);
+  Chip_SPI_SetConfig (LPC_SPI0, &spiCfg);
+  Chip_SPI_SetControlInfo (LPC_SPI0, 8, SPI_TXCTL_RXIGNORE | SPI_TXDATCTL_EOT);
+  Chip_SPI_Enable (LPC_SPI0);
+
+  Chip_Clock_EnablePeriphClock (SYSCTL_CLOCK_SWM);
+
+  Chip_IOCON_PinMuxSet (LPC_IOCON, GPIO_SPI0_SCK_PORT,  GPIO_SPI0_SCK_PIN,  (IOCON_MODE_INACT | IOCON_DIGMODE_EN));
+  Chip_IOCON_PinMuxSet (LPC_IOCON, GPIO_SPI0_MISO_PORT, GPIO_SPI0_MISO_PIN, (IOCON_MODE_INACT | IOCON_DIGMODE_EN));
+  Chip_IOCON_PinMuxSet (LPC_IOCON, GPIO_SPI0_MOSI_PORT, GPIO_SPI0_MOSI_PIN, (IOCON_MODE_INACT | IOCON_DIGMODE_EN));
+  Chip_IOCON_PinMuxSet (LPC_IOCON, GPIO_SPI0_SSEL_PORT, GPIO_SPI0_SSEL_PIN, (IOCON_MODE_INACT | IOCON_DIGMODE_EN));
+
+  Chip_SWM_MovablePortPinAssign (SWM_SPI0_SCK_IO,      GPIO_SPI0_SCK_PORT,  GPIO_SPI0_SCK_PIN);
+  Chip_SWM_MovablePortPinAssign (SWM_SPI0_MISO_IO,     GPIO_SPI0_MISO_PORT, GPIO_SPI0_MISO_PIN);
+  Chip_SWM_MovablePortPinAssign (SWM_SPI0_MOSI_IO,     GPIO_SPI0_MOSI_PORT, GPIO_SPI0_MOSI_PIN);
+  Chip_SWM_MovablePortPinAssign (SWM_SPI0_SSELSN_0_IO, GPIO_SPI0_SSEL_PORT, GPIO_SPI0_SSEL_PIN);
+
+  Chip_Clock_DisablePeriphClock (SYSCTL_CLOCK_SWM);
 }
 
 //
@@ -200,6 +199,8 @@ static int dmaSPI (const void *pvData, size_t dataLen, size_t wordSize)
 
   if (dataLen > 1024)
     return -1;
+  if (dmaQueue.count >= MAX_SPI_DESCRIPTORS)
+    return 1;
 
   switch (wordSize)
   {
@@ -209,41 +210,35 @@ static int dmaSPI (const void *pvData, size_t dataLen, size_t wordSize)
     default                : return -1;
   }
 
-	NVIC_DisableIRQ (DMA_IRQn);
-
-	if (dmaQueue.count >= MAX_SPI_DESCRIPTORS)
+  NVIC_DisableIRQ (DMA_IRQn);
   {
-		NVIC_EnableIRQ (DMA_IRQn);
-    return 1;
+    dmaQueue.dmaDesc [dmaQueue.head].source  = DMA_ADDR ((uint8_t *) pvData + (dataLen * wordSize) - 1);
+    dmaQueue.dmaDesc [dmaQueue.head].dest    = DMA_ADDR (&LPC_SPI0->TXDAT);
+    dmaQueue.dmaDesc [dmaQueue.head].next    = DMA_ADDR (0);
+    dmaQueue.dmaDesc [dmaQueue.head].xfercfg = DMA_XFERCFG_CFGVALID | DMA_XFERCFG_SETINTA | DMA_XFERCFG_SWTRIG | DMA_XFERCFG_SRCINC_1 | DMA_XFERCFG_DSTINC_0 | DMA_XFERCFG_XFERCOUNT (dataLen) | width;
+
+    if (dmaQueue.count == 0)
+    {
+      Chip_DMA_SetupTranChannel (LPC_DMA, DMAREQ_SPI0_TX, &dmaQueue.dmaDesc [dmaQueue.head]);
+      Chip_DMA_SetupChannelTransfer (LPC_DMA, DMAREQ_SPI0_TX, dmaQueue.dmaDesc [dmaQueue.head].xfercfg);
+      Chip_DMA_SetValidChannel (LPC_DMA, DMAREQ_SPI0_TX);
+
+      dmaQueue.tail = (dmaQueue.tail + 1) % MAX_SPI_DESCRIPTORS;
+    }
+
+    dmaQueue.count++;
+    dmaQueue.head = (dmaQueue.head + 1) % MAX_SPI_DESCRIPTORS;
+    dmaQueue.xfers++;
   }
+  NVIC_EnableIRQ (DMA_IRQn);
 
-	dmaQueue.dmaDesc [dmaQueue.head].source  = DMA_ADDR ((uint8_t *) pvData + (dataLen * wordSize) - 1);
-	dmaQueue.dmaDesc [dmaQueue.head].dest    = DMA_ADDR (&LPC_SPI0->TXDAT);
-	dmaQueue.dmaDesc [dmaQueue.head].next    = DMA_ADDR (0);
-	dmaQueue.dmaDesc [dmaQueue.head].xfercfg = DMA_XFERCFG_CFGVALID | DMA_XFERCFG_SETINTA | DMA_XFERCFG_SWTRIG | DMA_XFERCFG_SRCINC_1 | DMA_XFERCFG_DSTINC_0 | DMA_XFERCFG_XFERCOUNT (dataLen) | width;
-
-	if (dmaQueue.count == 0)
-  {
-		Chip_DMA_SetupTranChannel (LPC_DMA, DMAREQ_SPI0_TX, &dmaQueue.dmaDesc [dmaQueue.head]);
-		Chip_DMA_SetupChannelTransfer (LPC_DMA, DMAREQ_SPI0_TX, dmaQueue.dmaDesc [dmaQueue.head].xfercfg);
-		Chip_DMA_SetValidChannel (LPC_DMA, DMAREQ_SPI0_TX);
-
-    dmaQueue.tail = (dmaQueue.tail + 1) % MAX_SPI_DESCRIPTORS;
-	}
-
-  dmaQueue.count++;
-  dmaQueue.head = (dmaQueue.head + 1) % MAX_SPI_DESCRIPTORS;
-  dmaQueue.xfers++;
-
-	NVIC_EnableIRQ (DMA_IRQn);
-
-	return 0;
+  return 0;
 }
 
 //
 //  dataLen is the number of entries in dataPtr, e.g. if dataPtr is an array of
 //  uint16_t [256], it would be 256, and wordSize would be sizeof (uint16_t).
-//
+
 static int dmaSPIEx (const void *dataPtr, size_t dataLen, size_t wordSize)
 {
   if (dataLen <= 1024)
@@ -277,9 +272,6 @@ static int dmaSPIEx (const void *dataPtr, size_t dataLen, size_t wordSize)
   }
 }
 
-//
-//------------------------------------------------------------------------------
-//
 typedef struct data_s
 {
   const char *str;

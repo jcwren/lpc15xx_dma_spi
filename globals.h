@@ -3,17 +3,17 @@
 //
 //  I/O pin definitions
 //
-#define GPIO_LCD_RA8876_CS_PORT      0  // PIO0.14  -- D13/P5 on J1
-#define GPIO_LCD_RA8876_CS_PIN      14  // PIO0.14  -- RA8876 chip select (active low)
+#define GPIO_SPI0_SSEL_PORT   0  // PIO0.14  -- D13/P5 on J1
+#define GPIO_SPI0_SSEL_PIN   14  // PIO0.14  -- SPI0 SSEL
 
-#define GPIO_SPI0_MISO_PORT          0  // PIO0.12  -- D12/P6 on J1
-#define GPIO_SPI0_MISO_PIN          12  // PIO0.12  -- SPI0 MISO
+#define GPIO_SPI0_MISO_PORT   0  // PIO0.12  -- D12/P6 on J1
+#define GPIO_SPI0_MISO_PIN   12  // PIO0.12  -- SPI0 MISO
 
-#define GPIO_SPI0_MOSI_PORT          0  // PIO0.28  -- D11/P7 on J1
-#define GPIO_SPI0_MOSI_PIN          28  // PIO0.28  -- SPI0 MOSI
+#define GPIO_SPI0_MOSI_PORT   0  // PIO0.28  -- D11/P7 on J1
+#define GPIO_SPI0_MOSI_PIN   28  // PIO0.28  -- SPI0 MOSI
 
-#define GPIO_SPI0_SCK_PORT           0  // PIO0.27  -- D10/P8 on J1
-#define GPIO_SPI0_SCK_PIN           27  // PIO0.27  -- SPI0 SCK
+#define GPIO_SPI0_SCK_PORT    0  // PIO0.27  -- D10/P8 on J1
+#define GPIO_SPI0_SCK_PIN    27  // PIO0.27  -- SPI0 SCK
 
 //
 //
