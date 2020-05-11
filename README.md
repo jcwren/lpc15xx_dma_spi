@@ -26,6 +26,19 @@ second, and then repeat forever. The red LED (PIO0\_25) will blink at a rate of
 4Hz, while the green LED (PIO0\_3) will blink at a rate of 8Hz. The blue LED
 (PIO1\_1) is not used.
 
+NOTE: This code only transmits. In the SPI0 configuration you'll find
+`SPI_TXCTL_RXIGNORE` is set. If you wish to use DMA to both transmit and
+receive at the same time, you'll need to setup a DMA receive transfer.
+Basically, anywhere you find a reference to `DMAREQ_SPI0_TX`, you'll need
+corresponding code for `DMAREQ_SPI0_RX`.
+
+I found that if you don't set the `SPI_TXCTL_RXIGNORE` option, the DMA handler
+would never fire. If you send a single character with
+`Chip_SPI_WriteFrames_Blocking()` then the DMA handler would fire. I didn't
+delve any deeper in to it, but I suspect the SPI recieve overflow error bit
+gets set and causes something to happen.  If you figure that out, post it a PR
+or an issue and I'll integrate it.
+
 ## Build environment
 
 Uses arm-gcc and make. The LPC15xx v2.20 libraries are included. There are two
