@@ -35,7 +35,7 @@ corresponding code for `DMAREQ_SPI0_RX`.
 I found that if you don't set the `SPI_TXCTL_RXIGNORE` option, the DMA handler
 would never fire. If you send a single character with
 `Chip_SPI_WriteFrames_Blocking()` then the DMA handler would fire. I didn't
-delve any deeper in to it, but I suspect the SPI recieve overflow error bit
+delve any deeper in to it, but I suspect the SPI receive overflow error bit
 gets set and causes something to happen.  If you figure that out, post it a PR
 or an issue and I'll integrate it.
 
