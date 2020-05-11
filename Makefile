@@ -61,8 +61,6 @@ LPC15xxLIB_INC += $(LPC15xxLIB_BASE)/lpc_core/lpc_chip/chip_common
 LPC15xxLIB_INC += $(LPC15xxLIB_BASE)/lpc_core/lpc_board/board_common
 LPC15xxLIB_INC += $(LPC15xxLIB_BASE)/lpc_core/lpc_board/boards_15xx/nxp_lpcxpresso_1549
 
-# ./lpcopen_v220/software/lpc_core/lpc_board/boards_15xx/nxp_lpcxpresso_1549/board.h
-
 LPC15xxLIB_C_SRC  = $(shell find $(LPC15xxLIB_BASE)/lpc_core -name \*.c)
 
 #
@@ -106,7 +104,7 @@ APPLICATION_LDSCRIPT=$(LDSCRIPTSDIR)/lpc1549.ld
 #
 #  The targets
 #
-APPLICATION=$(OUTPUTDIR)/display
+APPLICATION=$(OUTPUTDIR)/lpc1549_dma_spi
 
 #
 #  These shouldn't need to be changed
@@ -192,7 +190,7 @@ $(APPLICATION).bin : $(APPLICATION).hex
 
 $(APPLICATION).hex : $(APPLICATION).sym
 	echo "  OC    $@"
-	$(OBJCOPY) --change-addresses 0x08000000 -O ihex $(APPLICATION).elf $(APPLICATION).hex
+	$(OBJCOPY) -O ihex $(APPLICATION).elf $(APPLICATION).hex
 
 $(APPLICATION).sym : $(APPLICATION).elf
 	echo "  NM    $@"
@@ -251,10 +249,6 @@ clean :
 	find . -type f -name \*.exe -exec rm -f {} \;
 	find . -type f -name .depend -exec rm -f {} \;
 	find . -type f -name tags -exec rm -f {} \;
-
-.PHONY: jflash
-jflash :
-	 $(JFLASH) -min -openprjspazbee_20.jflash -eliminate -auto -startapp -exit
 
 .PHONY: fix_crlf
 fix_crlf :
